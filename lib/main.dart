@@ -8,14 +8,15 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      initialRoute:"/",
+      initialRoute: "/",
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      routes:{
-        "/":(context)=> MyHomePage(title: 'Flutter Demo Home Page'),
-        "new_route":(context)=>NewRoute(),
-        "tip_route":(context)=>TipRoute(text: ModalRoute.of(context).settings.arguments),
+      routes: {
+        "/": (context) => MyHomePage(title: 'Flutter Demo Home Page1'),
+        "new_route": (context) => NewRoute(),
+        "tip_route": (context) =>
+            TipRoute(text: ModalRoute.of(context).settings.arguments),
       },
     );
   }
@@ -54,20 +55,21 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             Text(
               '$_counter',
-              style: Theme.of(context).textTheme.display1,
+              style: Theme.of(context).textTheme.headline4,
             ),
             FlatButton(
               child: Text("open new route"),
               textColor: Colors.blue,
               onPressed: () {
-                //导航到新路由   
+                //导航到新路由
                 Navigator.pushNamed(context, "new_route");
               },
             ),
             RaisedButton(
               onPressed: () async {
                 // 打开tip_route，传递参数并等待返回结果
-                var result = await Navigator.of(context).pushNamed("tip_route", arguments: "553");
+                var result = await Navigator.of(context)
+                    .pushNamed("tip_route", arguments: "553");
                 // 输出tip_route路由返回结果
                 print("路由返回值: $result");
               },
@@ -91,7 +93,7 @@ class _MyHomePageState extends State<MyHomePage> {
 class RandomWordsWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-   // 生成随机字符串
+    // 生成随机字符串
     final wordPair = new WordPair.random();
     return Padding(
       padding: const EdgeInsets.all(8.0),
